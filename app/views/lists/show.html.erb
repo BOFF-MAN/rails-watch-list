@@ -2,6 +2,17 @@
 
 <h3>Movies in this list:</h3>
 
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li>
+      <%= "#{bookmark.movie.title} - #{bookmark.movie.rating}" %>
+      <%= link_to "Remove",
+          bookmark_path(bookmark),
+          method: :delete,
+          data: {confirm: "Are you sure?"} %>
+    </li>
+  <% end %>
+</ul>
 
-
+<%= link_to "Add a movie to list", new_list_bookmark_path(@list) %>
 <%= link_to "Back to Lists", lists_path %>
