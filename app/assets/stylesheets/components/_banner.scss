@@ -1,0 +1,42 @@
+.movie-banner {
+  background-size: cover;
+  background-position: center;
+  padding: 120px 0;
+  position: relative;
+  h1 {
+    margin: 16px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 32px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 20px;
+    color: white;
+    opacity: .7;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+  .btn-gradient {
+    margin: 16px;
+  }
+  .movie-count {
+    background-color: orange;
+    color: white;
+    border-radius: 24px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    padding: 8px;
+  }
+}
+
+.banner-movie {
+  margin: 0px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .form-movie {
+    color: white;
+    font-weight: bold;
+  }
+}

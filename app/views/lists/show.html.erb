@@ -1,18 +1,45 @@
-<h1><%= @list.name %></h1>
+<div class="movie-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url();">
+  <div class="banner-movie">
+    <h1><%= @list.name %></h1>
+    <div class="form-movie">
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.input :comment %>
+        <%= f.association :movie %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="movie-count"><%=
+      if @list.bookmarks.count == 1
+        "#{@list.bookmarks.count} movie"
+      else
+        "#{@list.bookmarks.count} movies"
+      end
+    %></h2>
+    </div>
+  </div>
+</div>
 
-<h3>Movies in this list:</h3>
+<div style= "margin: 16px">
+  <h3>Movies in this list:</h3>
+</div>
 
-<ul>
+<div class="cards">
   <% @list.bookmarks.each do |bookmark| %>
-    <li>
-      <%= "#{bookmark.movie.title} - #{bookmark.movie.rating}" %>
-      <%= link_to "Remove",
+    <div class="card-movie">
+      <%= image_tag bookmark.movie.poster_url %>
+      <div class="card-movie-infos">
+        <div>
+          <h3><%= bookmark.movie.title %></h3>
+          <p><%= bookmark.movie.overview %></p>
+        </div>
+      </div>
+      <div class="card-movie-footer">
+        <h3><%= "#{bookmark.movie.rating}/10" %></h3>
+        <%= link_to "delete",
           bookmark_path(bookmark),
           method: :delete,
-          data: {confirm: "Are you sure?"} %>
-    </li>
+          data: {confirm: "Are you sure?"}, style: "red bold" %>
+      </div>
+    </div>
   <% end %>
-</ul>
-
-<%= link_to "Add a movie to list", new_list_bookmark_path(@list) %>
-<%= link_to "Back to Lists", lists_path %>
+</div>
